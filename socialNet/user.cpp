@@ -10,7 +10,6 @@ void User::init(unsigned int id, std::string username, unsigned int age)
 
 void User::clear()
 {
-	//this command clears the string
 	username.clear();
 	id = 0;
 	age = 0;
@@ -49,12 +48,14 @@ bool User::checkIfDevicesAreOn() const
 	Device temp;
 	bool devState = true;
 	
-	//here we make temp node point to the first node in the list of this users devices
+	//here we make a node point to the first node in the list of this users devices
 	tempNode = devices.get_first();
 
 	while (tempNode != NULL)
 	{
+		//here we get the nodes current device
 		temp = tempNode->get_data();
+		//if the device is off then we return false
 		if (temp.isActive() == false)
 		{
 			devState = false;

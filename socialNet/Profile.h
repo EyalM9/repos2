@@ -29,6 +29,4 @@ private:
 	Page page;
 	User owner;
 	UserList userList;
-	
-
 };

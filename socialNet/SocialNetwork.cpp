@@ -26,6 +26,7 @@ std::string SocialNetwork::getNetworkName() const
 
 bool SocialNetwork::addProfile(Profile profile_to_add)
 {
+	//here we get the age of the owner
 	int ownerAge = profile_to_add.getOwner().getAge();
 	if (ownerAge < minAge)
 	{
@@ -45,14 +46,17 @@ std::string SocialNetwork::getWindowsDevices() const
 	ProfileNode* temp;
 	DeviceNode* tempDevice;
 
+	//here we get the first node in the list of profiles
 	temp = profileList.get_first();
 
 	while (temp != NULL)
 	{
+		//here we get the list of devices from the current profile
 		tempDevice = temp->get_data().getOwner().getDevices().get_first();
 		while (tempDevice != NULL)
 		{
 			OS = tempDevice->get_data().getOS();
+			//if the os starts with w that means its windows
 			if (OS[0] == 'W')
 			{
 				windowStr.append("[");
@@ -65,6 +69,7 @@ std::string SocialNetwork::getWindowsDevices() const
 		}
 		temp = temp->get_next();
 	}
+	//here we remove some ofthe extra chars in are string
 	windowStr.pop_back();
 	windowStr.pop_back();
 	return windowStr;
